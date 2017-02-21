@@ -6,7 +6,6 @@ import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import org.usfirst.frc369.Robot2017Code.uitils.*;
 import org.usfirst.frc369.Robot2017Code.RobotMap;
 
 /**
@@ -16,10 +15,9 @@ public class DoubleEncoder extends Subsystem implements PIDOutput{
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-	private final double P = 2.0;
-	private final double I = 0.8;
-	private final double D = 0.7;
-	private SimPID PID;
+	public double P = 2.0;
+	public double I = 0.8;
+	public double D = 0.7;
 	private final Encoder leftEncoder = RobotMap.leftEncoder;
 	private final Encoder rightEncoder = RobotMap.rightEncoder;
 	private double speedCorrectionValue = 0.0;
@@ -56,6 +54,9 @@ public class DoubleEncoder extends Subsystem implements PIDOutput{
     	SmartDashboard.putNumber("left Drvie Encoder", leftEncoder.getDistance());
     	SmartDashboard.putNumber("Right Drive Encoder", rightEncoder.getDistance());
     	SmartDashboard.putNumber("speed Correction", speedCorrectionValue);
+    	SmartDashboard.putNumber("P", P);
+    	SmartDashboard.putNumber("I", I);
+    	SmartDashboard.putNumber("D", D);
     	//SmartDashboard.putBoolean("TargetAcquired", didAcquireDistance());
     }
     

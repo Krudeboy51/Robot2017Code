@@ -11,7 +11,7 @@
 
 package org.usfirst.frc369.Robot2017Code.commands;
 import edu.wpi.first.wpilibj.command.Command;
-import org.usfirst.frc369.Robot2017Code.Robot;
+//import org.usfirst.frc369.Robot2017Code.Robot;
 
 /**
  *
@@ -39,6 +39,7 @@ public class AutonomousCommand extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	new PlaceGearAutonomous();
     }
 
     // Called repeatedly when this Command is scheduled to run

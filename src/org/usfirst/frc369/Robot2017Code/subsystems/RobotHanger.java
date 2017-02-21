@@ -12,10 +12,7 @@
 package org.usfirst.frc369.Robot2017Code.subsystems;
 
 import org.usfirst.frc369.Robot2017Code.RobotMap;
-import org.usfirst.frc369.Robot2017Code.commands.*;
 import edu.wpi.first.wpilibj.SpeedController;
-import edu.wpi.first.wpilibj.VictorSP;
-
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 
