@@ -7,21 +7,21 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class driveByJoy extends Command {
+public class GearHanlderUp extends Command {
 
-    public driveByJoy() {
+    public GearHanlderUp() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	requires(Robot.gearHandler);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	
+    	Robot.gearHandler.pullHandlerUp();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveSys.normalizedSpeed(Robot.oi.getleftStick(), Robot.oi.getRightStick());
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -36,5 +36,6 @@ public class driveByJoy extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	end();
     }
 }

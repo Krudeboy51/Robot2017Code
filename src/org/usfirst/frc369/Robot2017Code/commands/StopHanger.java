@@ -1,8 +1,6 @@
 package org.usfirst.frc369.Robot2017Code.commands;
 
 import org.usfirst.frc369.Robot2017Code.Robot;
-import org.usfirst.frc369.Robot2017Code.subsystems.RobotHanger;
-
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
