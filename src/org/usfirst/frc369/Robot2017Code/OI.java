@@ -59,6 +59,7 @@ public class OI {
     public JoystickButton l1;
     public JoystickButton circle;
     public JoystickButton triangle;
+    public JoystickButton leftStickButton;
     public Joystick ps4_Controller;
     public Joystick ps4_Controller2;
 
@@ -78,7 +79,7 @@ public class OI {
         r1 = new JoystickButton(ps4_Controller, 6); 
         circle = new JoystickButton(ps4_Controller, 4);
         triangle = new JoystickButton(ps4_Controller, 3);
-        
+        leftStickButton = new JoystickButton(ps4_Controller, 11);
         
         triangle.whenPressed(new HangerClimbUp());
         triangle.whenReleased(new StopHanger());
@@ -119,6 +120,10 @@ public class OI {
     	return ps4_Controller.getRawAxis(5);
     }
     
+    
+    public boolean getStickButton(){
+    	return ps4_Controller.getRawButton(11);
+    }
     
 
 

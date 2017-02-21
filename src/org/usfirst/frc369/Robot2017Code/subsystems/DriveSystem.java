@@ -45,6 +45,10 @@ public class DriveSystem extends Subsystem implements PIDOutput {
     	Drive(left, right);
     }
     
+    public void Drive2(double speed, double angle){
+    	driveSystem.drive(speed, angle);
+    }
+    
     public void shiftToHighGear(){
     	gearSwitcher.set(Value.kForward);
     }
