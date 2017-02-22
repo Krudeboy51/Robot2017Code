@@ -82,6 +82,7 @@ public class RobotMap {
        
         driveSystem = new RobotDrive(leftFrontDriveMotor, leftRearDriveMotor, rightFrontDriveMotor, rightRearDriveMotor);
         driveSystem.setExpiration(0.1);
+        driveSystem.setSafetyEnabled(false);
 
         gearSwitcher = new DoubleSolenoid(0, 1);
         

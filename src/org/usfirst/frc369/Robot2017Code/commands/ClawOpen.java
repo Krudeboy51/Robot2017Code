@@ -9,6 +9,8 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class ClawOpen extends Command {
 
+	private boolean isDone = false;
+	
     public ClawOpen() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -22,11 +24,12 @@ public class ClawOpen extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	isDone = true;
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return isDone;
     }
 
     // Called once after isFinished returns true

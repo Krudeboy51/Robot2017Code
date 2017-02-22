@@ -69,13 +69,32 @@ public class DriveSystem extends Subsystem implements PIDOutput {
     	navX_Gyro.reset();
     }
     
+    public void driveStraightReverse(double speed){
+    	try {
+            // if (speed > 0)
+             	driveSystem.drive(speed, navX_Gyro.getAngle()*0.005);
+             //else
+             	//driveSystem.drive(speed, navX_Gyro.getAngle()*0.005);
+         } catch( RuntimeException ex ) {
+             DriverStation.reportError("Error communicating with drive system:  " + ex.getMessage(), true);
+         }
+
+    }
+    
     public void driveStraight(double speed){
         try {
-            SmartDashboard.putNumber("Gyro Angle", navX_Gyro.getAngle());
-            driveSystem.drive(0.5, -navX_Gyro.getAngle()*0.005);
+           // if (speed > 0)
+            	driveSystem.drive(speed, -navX_Gyro.getAngle()*0.005);
+            //else
+            	//driveSystem.drive(speed, navX_Gyro.getAngle()*0.005);
         } catch( RuntimeException ex ) {
             DriverStation.reportError("Error communicating with drive system:  " + ex.getMessage(), true);
         }
+
+    }
+    
+    public void stopDrive(){
+    	driveSystem.drive(0.0, 0.0);
     }
     
     public void rotateToAngle(double angle){
@@ -90,7 +109,11 @@ public class DriveSystem extends Subsystem implements PIDOutput {
     public void shiftToLowGear(){
     	gearSwitcher.set(Value.kReverse);
     }
-
+    
+    public double getSysAngle(){
+    	return navX_Gyro.getAngle();
+    }
+    
 	@Override
 	public void pidWrite(double output) {
 		// TODO Auto-generated method stub

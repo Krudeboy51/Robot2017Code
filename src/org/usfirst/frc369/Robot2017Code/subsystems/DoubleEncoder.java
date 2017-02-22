@@ -21,6 +21,8 @@ public class DoubleEncoder extends Subsystem implements PIDOutput{
 	private final Encoder leftEncoder = RobotMap.leftEncoder;
 	private final Encoder rightEncoder = RobotMap.rightEncoder;
 	private double speedCorrectionValue = 0.0;
+	private double distanceToTravel = 0.0;
+	
 	
 	private PIDController pidController = new PIDController(P, I, D, rightEncoder, this);
 	//private PIDController pidController2 = new PIDController(P, I, D, rightEncoder, this);
@@ -36,8 +38,8 @@ public class DoubleEncoder extends Subsystem implements PIDOutput{
     }
     
     public void setDistanceToAcquire(double dist){
-    	pidController.setSetpoint(dist);
-    	//pidController2.setSetpoint(dist);
+    	//pidController.setSetpoint(dist);
+    	distanceToTravel = dist;
     }
     
     public void startTracking(){
@@ -46,8 +48,15 @@ public class DoubleEncoder extends Subsystem implements PIDOutput{
     	//pidController2.enable();
     }
     
+    public double getDistanceTravelled(){
+    	return leftEncoder.getDistance();
+    }
+    
     public boolean didAcquireDistance(){
-    	return pidController.onTarget();
+    	if (leftEncoder.getDistance() >= distanceToTravel)
+    		return true;
+    	
+    	return false;			
     }
     
     public void getValues(){

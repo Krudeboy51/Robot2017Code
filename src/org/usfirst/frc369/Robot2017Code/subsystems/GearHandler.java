@@ -31,11 +31,11 @@ public class GearHandler extends Subsystem {
     }
     
     public void closeGearClaw(){
-    	gearClaw.set(Value.kForward);
+    	gearClaw.set(Value.kReverse);
     }
     
     public void openGearClaw(){
-    	gearClaw.set(Value.kReverse);
+    	gearClaw.set(Value.kForward);
     }
     
 }

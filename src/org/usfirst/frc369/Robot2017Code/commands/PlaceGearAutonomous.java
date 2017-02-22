@@ -28,8 +28,10 @@ public class PlaceGearAutonomous extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	
-    	requires(Robot.driveSys);
-    	
-    	addParallel(new DriveStraight(0.5), 3.0);
+    	addSequential(new DriveStraightToSetDistance(0.25, 540)); //drives str
+    	addSequential(new ClawOpen());
+    	addSequential(new GearHandlerDown());
+    	addSequential(new DriveStraightToSetDistance(-0.25, 500));
+    	//addParallel(new GearHanlderUp());
     }
 }
