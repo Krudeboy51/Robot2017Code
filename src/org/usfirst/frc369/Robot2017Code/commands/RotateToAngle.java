@@ -7,40 +7,31 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class DriveStraightToSetDistance extends Command {
+public class RotateToAngle extends Command {
 
-	private double distanceToTravel;
-	private double travelSpeed;
+	private double angleToAcquire = 0.0;
 	
-    public DriveStraightToSetDistance(double speed, double dist) {
+    public RotateToAngle(double angle) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.dblE);
     	requires(Robot.driveSys);
-    	distanceToTravel = dist;
-    	travelSpeed = speed;
+    	angleToAcquire = angle;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.dblE.reset();
     	Robot.driveSys.resetAngle();
-    	Robot.dblE.setDistanceToAcquire(distanceToTravel);
-    	Robot.driveSys.shiftToLowGear();
+    	Robot.driveSys.rotateToAngle(angleToAcquire);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if (travelSpeed > 0)
-    		Robot.driveSys.driveStraightReverse(travelSpeed);
-    	else
-    		Robot.driveSys.driveStraight(travelSpeed);
-    		
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Robot.dblE.didAcquireDistance();
+        return Robot.driveSys.didAchievedAngle();
     }
 
     // Called once after isFinished returns true
